@@ -1,1 +1,30 @@
-1111
+---
+layout: default
+---
+
+<div class="home">
+  <div class="page-heading">
+    <h1>欢迎来到{{ site.title }}</h1>
+    <p>{{ site.description }}</p>
+  </div>
+
+  {%- if site.posts.size > 0 -%}
+    <div class="post-grid">
+      {%- assign posts = site.posts | limit: 6 -%}
+      {%- for post in posts -%}
+        {%- include post-card.html -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if site.posts.size > 6 -%}
+      <div class="text-center">
+        <a href="{{ '/archive/' | relative_url }}" class="btn btn-primary">查看所有文章</a>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <div class="text-center">
+      <h2>暂无文章</h2>
+      <p>敬请期待新内容！</p>
+    </div>
+  {%- endif -%}
+</div>

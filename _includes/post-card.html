@@ -1,0 +1,30 @@
+<article class="post-card">
+  <div class="post-card-content">
+    <h2 class="post-card-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </h2>
+    
+    <div class="post-card-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%B %d, %Y" }}
+      </time>
+      {%- if post.categories.size > 0 -%}
+        <span class="post-card-category">
+          {{ post.categories.first }}
+        </span>
+      {%- endif -%}
+    </div>
+    
+    <div class="post-card-excerpt">
+      {{ post.excerpt | strip_html | truncatewords: 30 }}
+    </div>
+    
+    {%- if post.tags.size > 0 -%}
+      <div class="post-card-tags">
+        {%- for tag in post.tags limit: 3 -%}
+          <span class="tag">#{{ tag }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</article>

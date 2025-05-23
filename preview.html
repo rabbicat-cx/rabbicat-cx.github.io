@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兔猫的博客 - 预览</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5856D6;
+            --text-primary: #1C1C1E;
+            --text-secondary: #636366;
+            --text-tertiary: #8E8E93;
+            --text-inverse: #FFFFFF;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F2F2F7;
+            --bg-tertiary: #FFFFFF;
+            --gray-100: #F2F2F7;
+            --gray-200: #E5E5EA;
+            --gray-300: #D1D1D6;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Roboto, sans-serif;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition-base: 0.25s ease-out;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .site-header {
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .site-header .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .page-link {
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.15s ease-out;
+        }
+
+        .page-link:hover {
+            color: var(--primary-color);
+            background-color: var(--gray-100);
+        }
+
+        .page-content {
+            padding: var(--spacing-2xl) 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .home .page-heading {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .home .page-heading h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .home .page-heading p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .post-card {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            border: 1px solid var(--gray-200);
+        }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .post-card-title {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .post-card-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .post-card-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .post-card-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .post-card-category {
+            background-color: var(--primary-color);
+            color: var(--text-inverse);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+
+        .post-card-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .post-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .tag {
+            background-color: var(--gray-100);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .site-footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--gray-200);
+            padding: var(--spacing-3xl) 0 var(--spacing-xl) 0;
+            margin-top: var(--spacing-3xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .footer-col h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 0 var(--spacing-md);
+            }
+
+            .post-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+                text-align: center;
+            }
+
+            .site-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <a class="site-title" href="/">兔猫的博客</a>
+            <nav class="site-nav">
+                <a class="page-link" href="/">首页</a>
+                <a class="page-link" href="/about/">关于</a>
+                <a class="page-link" href="/archive/">归档</a>
+                <a class="page-link" href="/categories/">分类</a>
+                <a class="page-link" href="/tags/">标签</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="wrapper">
+            <div class="home">
+                <div class="page-heading">
+                    <h1>欢迎来到兔猫的博客</h1>
+                    <p>一个采用苹果设计风格的现代博客。分享关于技术、设计和生活的思考。</p>
+                </div>
+
+                <div class="post-grid">
+                    <article class="post-card">
+                        <div class="post-card-content">
+                            <h2 class="post-card-title">
+                                <a href="#">现代Web开发：2024年完整指南</a>
+                            </h2>
+
+                            <div class="post-card-meta">
+                                <time>2024年1月25日</time>
+                                <span class="post-card-category">Web开发</span>
+                            </div>
+
+                            <div class="post-card-excerpt">
+                                Web开发领域在过去几年中发生了巨大变化。现代网站需要快速、可访问，并在所有设备上提供出色的用户体验。
+                            </div>
+
+                            <div class="post-card-tags">
+                                <span class="tag">#JavaScript</span>
+                                <span class="tag">#CSS</span>
+                                <span class="tag">#教程</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-card-content">
+                            <h2 class="post-card-title">
+                                <a href="#">苹果设计原则：Web开发的启示</a>
+                            </h2>
+
+                            <div class="post-card-meta">
+                                <time>2024年1月20日</time>
+                                <span class="post-card-category">设计</span>
+                            </div>
+
+                            <div class="post-card-excerpt">
+                                苹果长期以来被认为是设计领域的领导者，创造出既实用又美观直观的产品。作为Web开发者和设计师，我们可以从苹果的设计哲学中学到很多。
+                            </div>
+
+                            <div class="post-card-tags">
+                                <span class="tag">#苹果</span>
+                                <span class="tag">#设计</span>
+                                <span class="tag">#UI</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-card-content">
+                            <h2 class="post-card-title">
+                                <a href="#">欢迎来到我的博客</a>
+                            </h2>
+
+                            <div class="post-card-meta">
+                                <time>2024年1月15日</time>
+                                <span class="post-card-category">综合</span>
+                            </div>
+
+                            <div class="post-card-excerpt">
+                                你好，欢迎来到我的新博客！我很兴奋能与你分享这个空间，在这里我将写关于技术、设计和各种我感兴趣的话题。
+                            </div>
+
+                            <div class="post-card-tags">
+                                <span class="tag">#欢迎</span>
+                                <span class="tag">#博客</span>
+                                <span class="tag">#介绍</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>兔猫的博客</h3>
+                    <p>一个采用苹果设计风格的现代博客。分享关于技术、设计和生活的思考。</p>
+                </div>
+                <div class="footer-col">
+                    <h3>联系方式</h3>
+                    <p>GitHub • Twitter</p>
+                </div>
+                <div class="footer-col">
+                    <h3>订阅</h3>
+                    <p>RSS 订阅</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

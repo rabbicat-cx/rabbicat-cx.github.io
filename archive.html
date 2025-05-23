@@ -1,0 +1,33 @@
+---
+layout: page
+title: 归档
+permalink: /archive/
+---
+
+<div class="archive-list">
+  {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+
+  {%- for year_group in posts_by_year -%}
+    <div class="archive-year">
+      <h2>{{ year_group.name }}年</h2>
+
+      {%- for post in year_group.items -%}
+        <div class="post-item">
+          <div class="post-date">
+            {{ post.date | date: "%m月%d日" }}
+          </div>
+          <div class="post-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
+
+  {%- if site.posts.size == 0 -%}
+    <div class="text-center">
+      <h2>暂无文章</h2>
+      <p>敬请期待新内容！</p>
+    </div>
+  {%- endif -%}
+</div>
