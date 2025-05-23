@@ -1,8 +1,8 @@
 # Site settings
-title: 兔猫的博客
+title: 三小只 🐱🐱🐰
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  一个采用苹果设计风格的现代博客。分享关于技术、设计和生活的思考。
+  三小只的生活记录。分享旅行、美食、日常和有趣的故事。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://rabbicat-cx.github.io" # the base hostname & protocol for your site
 twitter_username: rabbicat_cx
@@ -60,7 +60,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "兔猫"
+      author: "三小只"
   - scope:
       path: ""
     values:
